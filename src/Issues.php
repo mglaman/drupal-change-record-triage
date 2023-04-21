@@ -45,7 +45,10 @@ final class Issues
           throw new \RuntimeException("Rate limit reset over 90: $wait");
         }
         print PHP_EOL . "Waiting $wait for rate limit reset" . PHP_EOL;
-        sleep($wait);
+        // weird bug where it was -1
+        if ($wait > 0) {
+          sleep($wait);
+        }
         return self::exists($title);
       }
 
@@ -94,7 +97,10 @@ BODY;
         if ($wait > 90) {
           throw new \RuntimeException("Rate limit reset over 90: $wait");
         }
-        sleep($wait);
+        // weird bug where it was -1
+        if ($wait > 0) {
+          sleep($wait);
+        }
         self::create($changeRecord);
       }
       else {
