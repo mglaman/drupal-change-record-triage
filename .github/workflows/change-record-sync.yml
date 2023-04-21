@@ -1,6 +1,8 @@
 name: Change record sync
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 jobs:
   sync:
     name: Change record sync
@@ -20,3 +22,5 @@ jobs:
       - run: composer install
       - name: Do sync
         run: php sync.php
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

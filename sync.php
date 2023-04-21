@@ -4,14 +4,24 @@ declare(strict_types=1);
 
 require __DIR__.'/vendor/autoload.php';
 
-$changeNotices = \App\ChangeRecords::get();
+$createdCount = 0;
+$changeRecords = \App\ChangeRecords::get();
+foreach ($changeRecords as $changeRecord) {
+  print sprintf(
+      '[%s] %s',
+      $changeRecord['branch'],
+      $changeRecord['title'],
+    ) . PHP_EOL;
 
-foreach ($changeNotices as $changeNotice) {
-  $noteText = sprintf(
-    '%s %s %s',
-    $changeNotice['branch'],
-    $changeNotice['title'],
-    $changeNotice['url'],
-  );
-  print $noteText . PHP_EOL;
+  try {
+    if (!\App\Issues::exists($changeRecord['title'])) {
+      \App\Issues::create($changeRecord);
+      $createdCount++;
+    }
+  } catch (\Exception) {
+    break;
+  }
+  usleep( 500000 );
 }
+
+print PHP_EOL . "Created $createdCount issues" . PHP_EOL;

@@ -19,15 +19,16 @@ final class ChangeRecords
 
     $query = http_build_query([
       'type' => 'changenotice',
+      'field_project' => 3060,
       'field_change_to_branch' => [
         'value' => [
 //          '10.1.x',
 //          '10.0.x',
+//          '9.5.x',
 //          '9.4.x',
 //          '9.3.x',
 //          '9.2.x',
-//          '9.1.x',
-          '9.0.x',
+          '9.1.x',
         ],
       ],
       'field_change_record_status' => true,
@@ -59,6 +60,7 @@ final class ChangeRecords
       'release' => $changeRecord->field_change_to,
       'url' => $changeRecord->url,
       'title' => $changeRecord->title,
+      'body' => $changeRecord->field_description->value
     ], $results);
   }
 }
