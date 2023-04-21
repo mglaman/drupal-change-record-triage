@@ -1,0 +1,16 @@
+name: Close informational
+
+on:
+  issues:
+    types: [ labeled ]
+
+jobs:
+  build:
+    if: ${{ github.event.label.name == 'Informational' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Close change record
+        run: gh issue close ${{ github.event.issue.number }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
