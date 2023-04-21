@@ -21,13 +21,13 @@ final class ChangeRecords
       'type' => 'changenotice',
       'field_change_to_branch' => [
         'value' => [
-          '10.1.x',
+//          '10.1.x',
 //          '10.0.x',
 //          '9.4.x',
 //          '9.3.x',
 //          '9.2.x',
 //          '9.1.x',
-//          '9.0.x',
+          '9.0.x',
         ],
       ],
       'field_change_record_status' => true,
