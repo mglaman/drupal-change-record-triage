@@ -1,0 +1,22 @@
+name: Change record sync
+on:
+  workflow_dispatch:
+jobs:
+  sync:
+    name: Change record sync
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          coverage: none
+          php-version: 8.1
+          tools: composer:v2
+          extensions: curl
+      - run: composer install
+      - name: Do sync
+        run: php sync.php
