@@ -1,6 +1,11 @@
 # drupal-change-record-triage
 Used to triage Drupal change records to ensure phpstan-drupal, drupal-rector, and upgrade_status have appropriate issues.
 
+Any open issue needs one of the following:
+
+- Triage and labeling
+- Verifying that upgrade_status, phpstan-drupal, or drupal-rector has a related ticket
+
 ## Change records by group
 
 * [JavaScript changes](https://github.com/mglaman/drupal-change-record-triage/issues?q=is%3Aissue+sort%3Aupdated-desc+label%3AJavaScript+)
