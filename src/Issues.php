@@ -96,7 +96,7 @@ BODY;
         $wait = $rateLimitReset - time();
         print PHP_EOL . "Waiting $wait for rate limit reset" . PHP_EOL;
         if ($wait > 90) {
-          throw new \RuntimeException("Rate limit reset over 90: $wait");
+          throw new \RuntimeException("Rate limit reset over 90: $wait" . PHP_EOL . $response->getBody());
         }
         // weird bug where it was -1
         if ($wait > 0) {

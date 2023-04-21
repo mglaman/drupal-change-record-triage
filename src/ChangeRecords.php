@@ -24,8 +24,7 @@ final class ChangeRecords
         'value' => [
 //          '10.1.x',
 //          '10.0.x',
-//          '9.5.x',
-          '9.4.x',
+          '9.5.x',
         ],
       ],
       'field_change_record_status' => true,

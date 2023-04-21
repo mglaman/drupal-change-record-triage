@@ -18,7 +18,8 @@ foreach ($changeRecords as $changeRecord) {
       \App\Issues::create($changeRecord);
       $createdCount++;
     }
-  } catch (\Exception) {
+  } catch (\Exception $exception) {
+    print "Stopped at exception: {$exception->getMessage()}" . PHP_EOL;
     break;
   }
   usleep( 500000 );
