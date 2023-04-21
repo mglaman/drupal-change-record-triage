@@ -63,6 +63,8 @@ final class Issues
     $body = <<<BODY
 {$changeRecord['url']}
 
+Introduced in branch/version: {$changeRecord['branch']} / {$changeRecord['release']}
+
 {$changeRecord['body']}
 BODY;
 
@@ -73,7 +75,6 @@ BODY;
           'body' => $body,
           'labels' => array_filter([
             $changeRecord['branch'],
-            $changeRecord['release'],
           ])
         ],
       ]);
