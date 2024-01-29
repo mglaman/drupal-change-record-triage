@@ -1,0 +1,14 @@
+name: Issue comment labels
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  label_issue:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo A comment on $NUMBER
+          echo $BODY
+        env:
+          NUMBER: ${{ github.event.issue.number }}
+          BODY: ${{ github.event.comment.body }}
