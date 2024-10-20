@@ -9,9 +9,46 @@ use GuzzleHttp\Exception\ClientException;
 
 final class Issues
 {
+  protected static $issueCache = [];
+
+  protected static function loadIssues(): void
+  {
+    $client = self::getClient();
+    $page = 1;
+    $perPage = 100;
+    $issues = [];
+    do {
+      $response = $client->get('/repos/mglaman/drupal-change-record-triage/issues', [
+        'query' => [
+          'per_page' => $perPage,
+          'page' => $page,
+        ],
+      ]);
+      $data = \json_decode(
+        (string)$response->getBody(),
+        false,
+        512,
+        JSON_THROW_ON_ERROR
+      );
+      $issues = array_merge($issues, $data);
+      $page++;
+    } while (count($data) === $perPage);
+
+    foreach ($issues as $issue) {
+      self::$issueCache[$issue->title] = $issue;
+    }
+  }
 
   public static function exists(string $title): bool
   {
+    if (empty(self::$issueCache)) {
+      self::loadIssues();
+    }
+
+    if (isset(self::$issueCache[$title])) {
+      return true;
+    }
+
     $client = self::getClient();
     $query = 'repo:mglaman/drupal-change-record-triage/issues is:issue ' . $title;
 
