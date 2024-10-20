@@ -22,6 +22,8 @@ final class ChangeRecords
       'field_project' => 3060,
       'field_change_to_branch' => [
         'value' => [
+          '10.4.x',
+          '10.3.x',
           '10.2.x',
           '10.1.x',
           '10.0.x',
