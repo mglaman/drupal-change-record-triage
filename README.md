@@ -12,6 +12,8 @@ Any open issue needs one of the following:
 * [Dependency changes](https://github.com/mglaman/drupal-change-record-triage/issues?q=is%3Aissue+sort%3Aupdated-desc+label%3ADependencies)
 * [Informational changes](https://github.com/mglaman/drupal-change-record-triage/issues?q=is%3Aissue+sort%3Aupdated-desc+label%3AInformational)
 
+* [Unarchived changes](https://github.com/mglaman/drupal-change-record-triage/issues?q=is%3Aopen+is%3Aissue+-label%3Aarchived) exclude the archived label to exclude old issues.
+
 ## Change records by automated tool
 
 * [PHPStan](https://github.com/mglaman/drupal-change-record-triage/issues?q=is%3Aissue+sort%3Aupdated-desc+label%3Aphpstan%2Cphpstan-deprecations%2Cphpstan-drupal)
